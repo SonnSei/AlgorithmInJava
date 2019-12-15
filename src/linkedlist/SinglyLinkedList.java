@@ -59,7 +59,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void add(E e) {
-        add(size, e);
+        addLast(e);
     }
 
     public void addFirst(E e){
