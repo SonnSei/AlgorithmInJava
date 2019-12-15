@@ -7,11 +7,11 @@ package array;
  * @Created by SunCheng
  */
 public class MyArray<E> {
+
     private static final int DEFAULT_CAPACITY = 10;
 
     private E[] data;
     private int size;
-
 
     public MyArray(int capacity) {
         data = (E[]) new Object[capacity];
@@ -37,7 +37,6 @@ public class MyArray<E> {
     public void add(int index, E e) {
         CheckIndexForAdd(index);
         if (size == data.length) {
-            // todo
             resize(size << 1);
         }
 
@@ -118,9 +117,11 @@ public class MyArray<E> {
 
     private void resize(int newCapacity) {
         E[] newData = (E[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++) {
-            newData[i] = data[i];
-        }
+
+        System.arraycopy(data,0,newData,0,size);
+//        for (int i = 0; i < size; i++) {
+//            newData[i] = data[i];
+//        }
         data = newData;
     }
 
