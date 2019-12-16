@@ -22,20 +22,26 @@ public class QuickSort {
     }
     public static void sort(int[] array, int left, int right) {
         if (left < right) {
-            int p1 = left;
-            int p2 = right;
-            int pivot = array[left];
-            while (p1 < p2) {
-                while (array[p2] >= pivot && p1 < p2)
-                    p2--;
-                while (array[p1] <= pivot && p1 < p2)
-                    p1++;
-                swap(array, p1, p2);
-            }
-            swap(array, left, p1);
-            sort(array, left, p1 - 1);
-            sort(array, p1 + 1, right);
+            int mid = partition(array,left,right);
+            sort(array, left, mid - 1);
+            sort(array, mid + 1, right);
         }
+    }
+
+    public static int partition(int[] nums, int left, int right) {
+        int p1 = left;
+        int p2 = right;
+        int pivot = nums[left];
+        // 先从右边走
+        while (p1 < p2) {
+            while (nums[p2] >= pivot && p1 < p2)
+                p2--;
+            while (nums[p1] <= pivot && p1 < p2)
+                p1++;
+            swap(nums, p1, p2);
+        }
+        swap(nums, left, p1);
+        return p1;
     }
 
     /**
@@ -47,13 +53,14 @@ public class QuickSort {
     }
     public static void sort2(int[] array, int left, int right) {
         if (left < right) {
-            int pivot = array[left];
-            int mid = help(array,left,right,pivot);
+            int mid = partition2(array,left,right);
             sort(array, left, mid - 1);
             sort(array, mid + 1, right);
         }
     }
-    public static int help(int[] nums,int left,int right,int pivot){
+    // 单边法
+    public static int partition2(int[] nums,int left,int right){
+        int pivot = nums[left];
         int p1 = left;
         int mid = left;
         for (int i = left; i <=right ; i++) {
@@ -87,8 +94,8 @@ public class QuickSort {
             int[] cur =stack.pop();
             int l = cur[0];
             int r = cur[1];
-            //这里是单边循环里的help函数
-            int mid = help(array,l,r,array[l]);
+            //这里是随便一个partition方法
+            int mid = partition(array,l,r);
             if(l<mid-1)stack.push(new int[]{l,mid-1});
             if(mid<r-1)stack.push(new int[]{mid+1,r});
         }

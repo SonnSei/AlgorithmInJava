@@ -2,7 +2,7 @@ package sorting;
 
 /**
  * @Classname MergeSort
- * @Description TODO
+ * @Description 归并排序
  * @Date 2019/12/6 15:43
  * @Created by Jesse
  */

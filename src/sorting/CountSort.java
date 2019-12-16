@@ -4,7 +4,7 @@ package sorting;
  * @Classname CountSort
  * @Description TODO
  * @Date 2019/12/6 18:14
- * @Created by Jesse
+ * @Created by SunCheng
  */
 public class CountSort {
     public static void sort(int[] nums) {
@@ -37,11 +37,6 @@ public class CountSort {
             sortedArray[countArray[nums[i]-min]-1] = nums[i];
             countArray[nums[i]-min]--;
         }
-
-//        for (int i = 0;i<nums.length;i++) {
-//            sortedArray[countArray[nums[i]-min]-1] = nums[i];
-//            countArray[nums[i]-min]--;
-//        }
 
         for (int i = 0; i < nums.length; i++) {
             nums[i] = sortedArray[i];

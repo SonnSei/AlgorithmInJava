@@ -13,22 +13,22 @@ public class Test {
 
         Random random = new Random();
 
-        int[] nums = new int[100];
+        int[] nums = new int[10];
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = random.nextInt()%100;
+            nums[i] = random.nextInt(9000)+1000;
         }
-        //System.out.println(Arrays.toString(nums));
-        SelectSort.sort(nums);
+        RadixSort.sort(nums);
         boolean success = true;
         for (int i = 0; i < nums.length-1; i++) {
             if (nums[i] > nums[i + 1]) {
+                System.out.println("fail");
                 success = false;
                 break;
             }
         }
-        //System.out.println(Arrays.toString(nums));
-        System.out.println(success?"success":"fail");
-
+        if (success) {
+            System.out.println("success");
+        }
 
     }
 
