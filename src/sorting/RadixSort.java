@@ -1,10 +1,8 @@
 package sorting;
 
-import java.util.Arrays;
-
 /**
  * @Classname RadixSort
- * @Description TODO
+ * @Description 基数排序
  * @Date 2019/12/16 9:25
  * @Created by SunCheng
  */
@@ -18,8 +16,6 @@ public class RadixSort {
             // 根据第i位进行排序
             countSort(nums, i);
         }
-
-        System.out.println(Arrays.toString(nums));
     }
 
     private static void countSort(int[] nums, int index) {

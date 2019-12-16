@@ -41,5 +41,4 @@ public class HeapSort {
         for (int i = begin; i >= 0; i--)
             siftDown(array, i, len);
     }
-
 }
