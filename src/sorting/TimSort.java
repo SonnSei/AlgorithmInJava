@@ -1,5 +1,7 @@
 package sorting;
 
+import java.util.Arrays;
+
 /**
  * @Classname TimSort
  * @Description TODO
@@ -7,4 +9,7 @@ package sorting;
  * @Created by Jesse
  */
 public class TimSort {
+    public static void main(String[] args) {
+
+    }
 }
