@@ -1,9 +1,6 @@
 package topk;
 
-import sorting.QuickSort;
-
-import static sorting.QuickSort.partition;
-import static utils.ArrayUtils.swap;
+import static 排序.QuickSort.partition;
 
 /**
  * @Classname KthSmallestWithQuickSort
