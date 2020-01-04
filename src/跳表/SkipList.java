@@ -4,7 +4,7 @@ package 跳表;
  * @Classname SkipList
  * @Description 跳表，存储正整数，可以有重复元素
  * @Date 2019/12/16 15:51
- * @Created by SunCheng
+ * @Created by SonnSei
  */
 
 public class SkipList {
@@ -109,5 +109,4 @@ public class SkipList {
         }
         return level;
     }
-
 }
