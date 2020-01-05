@@ -14,13 +14,28 @@ public class Test {
 
         Random random = new Random();
 
-        int[] nums = new int[10];
+         final int SIZE = 10000;
+        int[] nums = new int[SIZE];
+        int[] nums2 = new int[SIZE];
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = random.nextInt(9000)+1000;
+//            int cur = random.nextInt(100);;
+//            int cur = random.nextInt();
+            int cur = i;
+            nums[i] = cur;
+            nums2[i] = cur;
         }
-        System.out.println(Arrays.toString(nums));
-        ShellSort.sort(nums);
-        System.out.println(Arrays.toString(nums));
+        nums = new int[]{5,1,1,2,0,0};
+        long start= System.currentTimeMillis();
+//        System.out.println(Arrays.toString(nums));
+//        QuickSort3Path.sort(nums);
+        QuickTest.sort(nums);
+//        System.out.println(Arrays.toString(nums));
+        long end= System.currentTimeMillis();
+        System.out.println("随机pivot快排用时："+(end-start)+" ms");
+
+        QuickSort.sort(nums2);
+        long end2 = System.currentTimeMillis();
+        System.out.println("普通路快排用时："+(end2-end)+" ms");
         boolean success = true;
         for (int i = 0; i < nums.length-1; i++) {
             if (nums[i] > nums[i + 1]) {
@@ -31,6 +46,13 @@ public class Test {
         }
         if (success) {
             System.out.println("success");
+        }
+
+        for (int i = 0; i < nums2.length-1; i++) {
+            if (nums2[i] > nums2[i + 1]) {
+                System.out.println("3路fail");
+                break;
+            }
         }
     }
 }

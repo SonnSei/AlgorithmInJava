@@ -77,5 +77,4 @@ public class KMP {
         }
         array[0] = -1;
     }
-
 }

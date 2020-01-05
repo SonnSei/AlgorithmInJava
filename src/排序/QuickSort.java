@@ -1,5 +1,6 @@
 package 排序;
 
+import java.util.Random;
 import java.util.Stack;
 
 import static utils.ArrayUtils.swap;
@@ -78,6 +79,29 @@ public class QuickSort {
         return mid;
     }
 
+
+    /**
+     * 单边法+随机Pivot
+     */
+    public static int partition3(int[] nums,int left,int right){
+        int index = new Random().nextInt(right - left)+left;
+        int pivot = nums[index];
+        int p1 = left;
+        int mid = left;
+        for (int i = left; i <=right ; i++) {
+            if(nums[i]<=pivot){
+                swap(nums,i,p1++);
+            }
+        }
+        for (int i = right; i >=left ; i--) {
+            if (nums[i] < pivot) {
+                mid = i;
+                break;
+            }
+        }
+        swap(nums,index,mid);
+        return mid;
+    }
 
     /**
      * 非递归
