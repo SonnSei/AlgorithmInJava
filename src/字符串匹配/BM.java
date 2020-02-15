@@ -10,8 +10,9 @@ import java.util.Arrays;
  */
 public class BM {
     public static void main(String[] args) {
-        String a = "oisdjiofowiejofewj";
-        String b = "isdjiofowiejofewj";
+
+        String a = "aabaabbbaabbbbabaaab";
+        String b = "abaa";
         System.out.println(bm(a, b));
         System.out.println(a.indexOf(b));
     }
@@ -42,9 +43,15 @@ public class BM {
         int len = m-1-j;
         if(len==0)return 0;
         if(suffix[len]!=-1)return j-suffix[len]+1;
+        // i表示右移的位数，在第j位不匹配，则最少移动j+1次，但是如果是移动j+1次已经通过之前的判断排除
+        // 所以从移动j+2步开始
         for (int i = j + 2; i < m; i++) {
             if(prefix[m-i])return i;
         }
+        // 这个比较容易理解
+//        for(int i = m-j+1;i>0;i--){
+//            if(prefix[i])return m-i-1;
+//        }
         return m;
     }
 
@@ -57,20 +64,22 @@ public class BM {
      * @param suffix
      */
     private static void generateGS(char[] pChars, boolean[] prefix, int[] suffix) {
-        for (int i = 0; i < pChars.length; i++) {
+        Arrays.fill(suffix, -1);
+        for (int i = 0; i < pChars.length-1; i++) {
             int j = i;
             int k = 0;
             while (j >= 0 && pChars[j] == pChars[pChars.length - 1 - k]) {
-                suffix[k] = j;
                 j--;
                 k++;
+                suffix[k] = j+1;
             }
-            if(j==0)prefix[k] = true;
+            if(j==-1)prefix[k] = true;
         }
     }
 
     private static int[] generateBC(String p) {
         int[] ret = new int[128];
+        Arrays.fill(ret,-1);
         for (int i = 0; i < p.length(); i++) {
             ret[p.charAt(i)] = i;
         }

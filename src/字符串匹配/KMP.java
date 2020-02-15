@@ -53,6 +53,8 @@ public class KMP {
         prefix[0] = 0;
         int len = 0;
         int i = 1;
+        // i的累计增量是n，len的累计增量小于i的累计增量，而len的累计减量一定小于增量，
+        // 所以下面这个代码虽然一遍增加一边减少，但是复杂度是O（n）
         while (i < m) {
             if (pattern[i] == pattern[len]) {
                 len++;
@@ -67,6 +69,7 @@ public class KMP {
                 }
             }
         }
+        System.out.println(Arrays.toString(prefix));
         return prefix;
     }
 
@@ -76,5 +79,6 @@ public class KMP {
             array[i] = array[i - 1];
         }
         array[0] = -1;
+        System.out.println(Arrays.toString(array));
     }
 }
