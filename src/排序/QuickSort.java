@@ -69,6 +69,8 @@ public class QuickSort {
                 swap(nums,i,p1++);
             }
         }
+        // p1一开始指向小于等于pivot的，一开始移动后就指向了大于pivot的位置
+        // 直接用p1有时候会出问题
         for (int i = right; i >=left ; i--) {
             if (nums[i] < pivot) {
                 mid = i;
@@ -78,6 +80,7 @@ public class QuickSort {
         swap(nums,left,mid);
         return mid;
     }
+
 
 
     /**
